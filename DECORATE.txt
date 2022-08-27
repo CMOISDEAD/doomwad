@@ -1,5 +1,8 @@
 ACTOR SuperAutoShotgun : Weapon
 {
+
+21082
+21083
   Inventory.PickupMessage "You got the Auto gun! Boom, boom, boom."
   Weapon.AmmoType "Shell"
   Weapon.AmmoUse 1
