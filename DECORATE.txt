@@ -1,0 +1,41 @@
+ACTOR SuperAutoShotgun : Weapon
+{
+  Inventory.PickupMessage "You got the Auto gun! Boom, boom, boom."
+  Weapon.AmmoType "Shell"
+  Weapon.AmmoUse 1
+  Weapon.AmmoGive 16
+  Weapon.SlotNumber 3
+  Weapon.SelectionOrder 400
+  Weapon.kickback 100
+  AttackSound "weapons/shotgf"
+  States
+  {
+    Spawn:
+      HACA P -1
+      Stop
+    Ready:
+      HACA A 1 A_WeaponReady
+      Loop
+    Select:
+      HACA A 1 A_Raise
+      Loop
+    Deselect:
+      HACA A 1 A_Lower
+      Loop
+    Fire:
+      HACA B 0 A_GunFlash
+      HACA B 1 A_FireBullets(5.5, 3, 200, 4, "BulletPuff", 1)
+      HACA B 1 Offset(0,40)
+      HACA B 1 Offset(0,48)
+      HACA C 3 Offset(0,44)
+      HACA D 3 Offset(0,40)
+      HACA C 3 Offset(0,37)
+      HACA A 1 Offset(0,35)
+      HACA A 3
+      Goto Ready
+    Flash:
+      TNT1 A 2 A_Light2
+      TNT1 A 2 A_Light1
+      Goto LightDone
+  }
+}
